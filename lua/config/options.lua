@@ -39,7 +39,7 @@ vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 -- Disable virtual_text since it's redundant due to lsp_lines.
 vim.diagnostic.config({
-  virtual_text = false,
+  virtual_text = true,
 })
 
 local notify = vim.notify
@@ -50,3 +50,5 @@ vim.notify = function(msg, ...)
 
     notify(msg, ...)
 end
+
+

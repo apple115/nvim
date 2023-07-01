@@ -29,7 +29,6 @@ require("lazy").setup({
     require("nvim-surround").setup({})
   end
   }, -- Use for stability; omit to use `main` branch for the latest features
-
   {'nvim-lualine/lualine.nvim',dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true}},
   { "williamboman/mason.nvim", build = ":MasonUpdate",},-- :MasonUpdate updates registry contents
   {"williamboman/mason-lspconfig.nvim",},
@@ -40,14 +39,13 @@ require("lazy").setup({
   {
 	"L3MON4D3/LuaSnip",
 	-- follow latest release.
-	version = "<CurrentMajor>.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	version = "v1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
 	-- install jsregexp (optional!).
 	build = "make install_jsregexp"
   },
   { "rafamadriz/friendly-snippets" },
   {'saadparwaiz1/cmp_luasnip' },
   {'hrsh7th/cmp-buffer'},
-  {'j-hui/fidget.nvim'},
   {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
@@ -69,14 +67,18 @@ require("lazy").setup({
   },
   {'mfussenegger/nvim-dap'},
 --  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
-  {
-  "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-  config = function()
-    require("lsp_lines").setup(
-    )
-  end,
-  },
   {"theHamsta/nvim-dap-virtual-text"},
+  {"h-hg/fcitx.nvim"},
+   {
+ "folke/trouble.nvim",
+ dependencies = { "nvim-tree/nvim-web-devicons" },
+ opts = {
+  -- your configuration comes here
+  -- or leave it empty to use the default settings
+  -- refer to the configuration section below
+ },
+ {'is0n/fm-nvim'},
+}
 })
 
 require "plugins.nvim-tree"
@@ -85,7 +87,6 @@ require "plugins.lualine"
 require "plugins.telescope"
 require "plugins.lsp"
 require "plugins.cmp"
-require "plugins.fidget"
 require "plugins.lspsaga-lsp"
 require "plugins.dap"
 require "plugins.copilot"
