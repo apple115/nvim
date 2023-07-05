@@ -78,7 +78,14 @@ require("lazy").setup({
   -- refer to the configuration section below
  },
  {'is0n/fm-nvim'},
-}
+ { "RutaTang/quicknote.nvim", config=function()
+        -- you must call setup to let quicknote.nvim works correctly
+        require("quicknote").setup({})
+  end
+  , dependencies = { "nvim-lua/plenary.nvim"} },
+},
+{"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
+{"ggandor/leap.nvim",dependencies={"tpope/vim-repeat"}},
 })
 
 require "plugins.nvim-tree"
@@ -93,3 +100,7 @@ require "plugins.copilot"
 --require "plugins.dap-ui"
 require "plugins.nvim-dap-virtual-text"
 require "plugins.colorscheme"
+require "plugins.quickNote"
+require "plugins.fm-nvim"
+require "plugins.glow"
+require "plugins.leap"
