@@ -18,7 +18,6 @@ require("lazy").setup({
   "folke/tokyonight.nvim",
   lazy = false,
   priority = 1000,
-
   },
   {'shaunsingh/nord.nvim'},
   {'kyazdani42/nvim-tree.lua'},
@@ -61,7 +60,9 @@ require("lazy").setup({
     "glepnir/lspsaga.nvim",
     event = "LspAttach",
     config = function()
-      require("lspsaga").setup({})
+      require("lspsaga").setup({
+        theme = "tokyonight",
+      })
     end,
     dependencies = { {"nvim-tree/nvim-web-devicons"} }
   },
@@ -86,6 +87,22 @@ require("lazy").setup({
 },
 {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
 {"ggandor/leap.nvim",dependencies={"tpope/vim-repeat"}},
+{"shaunsingh/nord.nvim"},
+{
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = {
+    -- add any options here
+  },
+  dependencies = {
+    -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+    "MunifTanjim/nui.nvim",
+    -- OPTIONAL:
+    --   `nvim-notify` is only needed, if you want to use the notification view.
+    --   If not available, we use `mini` as the fallback
+    "rcarriga/nvim-notify",
+    }
+},
 })
 
 require "plugins.nvim-tree"
@@ -104,3 +121,4 @@ require "plugins.quickNote"
 require "plugins.fm-nvim"
 require "plugins.glow"
 require "plugins.leap"
+require "plugins.noice"

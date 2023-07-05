@@ -41,6 +41,7 @@ vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
 vim.diagnostic.config({
   virtual_text = true,
 })
+vim.o.termguicolors = true
 
 local notify = vim.notify
 vim.notify = function(msg, ...)

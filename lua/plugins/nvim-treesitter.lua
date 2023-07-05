@@ -1,7 +1,7 @@
 require'nvim-treesitter.configs'.setup {
   -- 安装 language parser
   -- :TSInstallInfo 命令查看支持的语言
-  ensure_installed = {"c","python"},
+  ensure_installed = {"c","python","lua","vim","bash","latex","regex","markdown","markdown_inline"},
   highlight = {
   enable = true,
   },
