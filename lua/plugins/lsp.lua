@@ -32,7 +32,11 @@ require'lspconfig'.clangd.setup {
 }
 
 require 'lspconfig'.pyright.setup{
-
-
 }
 
+require 'lspconfig'.omnisharp.setup{
+  root_dir = require'lspconfig'.util.root_pattern("*.csproj","*.sln");
+}
+
+require 'lspconfig'.omnisharp_mone.setup{
+}

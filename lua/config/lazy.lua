@@ -59,11 +59,6 @@ require("lazy").setup({
   {
     "glepnir/lspsaga.nvim",
     event = "LspAttach",
-    config = function()
-      require("lspsaga").setup({
-        theme = "tokyonight",
-      })
-    end,
     dependencies = { {"nvim-tree/nvim-web-devicons"} }
   },
   {'mfussenegger/nvim-dap'},
@@ -149,6 +144,7 @@ require("lazy").setup({
     "rcarriga/nvim-notify",
     }
 },
+  {"elkowar/yuck.vim"},
 })
 
 require "plugins.nvim-tree"
