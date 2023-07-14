@@ -56,11 +56,6 @@ require("lazy").setup({
     require("copilot_cmp").setup()
   end
   },
-  {
-    "glepnir/lspsaga.nvim",
-    event = "LspAttach",
-    dependencies = { {"nvim-tree/nvim-web-devicons"} }
-  },
   {'mfussenegger/nvim-dap'},
 --  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
   {"theHamsta/nvim-dap-virtual-text"},
@@ -153,7 +148,6 @@ require "plugins.lualine"
 require "plugins.telescope"
 require "plugins.lsp"
 require "plugins.cmp"
-require "plugins.lspsaga-lsp"
 require "plugins.dap"
 require "plugins.copilot"
 --require "plugins.dap-ui"
