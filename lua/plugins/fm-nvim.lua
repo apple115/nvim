@@ -1,3 +1,0 @@
-require('fm-nvim').setup {
-
-}

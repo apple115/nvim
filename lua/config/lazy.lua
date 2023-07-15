@@ -22,18 +22,24 @@ require("lazy").setup({
   {'shaunsingh/nord.nvim'},
   {'kyazdani42/nvim-tree.lua'},
   { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+  { 'nvim-treesitter/nvim-treesitter-context',
+    config= function ()
+      require 'treesitter-context'.setup{}
+    end,
+  },
   {"kylechui/nvim-surround", version="*",
   event = "VeryLazy",
   config = function ()
     require("nvim-surround").setup({})
   end
   }, -- Use for stability; omit to use `main` branch for the latest features
+  {'nvim-telescope/telescope.nvim', tag = '0.1.1',dependencies = { 'nvim-lua/plenary.nvim' }},
   {'nvim-lualine/lualine.nvim',dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true}},
   { "williamboman/mason.nvim", build = ":MasonUpdate",},-- :MasonUpdate updates registry contents
   {"williamboman/mason-lspconfig.nvim",},
   {"neovim/nvim-lspconfig",},
+  -- cmp
   {"hrsh7th/nvim-cmp",},
-  {'nvim-telescope/telescope.nvim', tag = '0.1.1',dependencies = { 'nvim-lua/plenary.nvim' }},
   {"hrsh7th/cmp-nvim-lsp",},
   {
 	"L3MON4D3/LuaSnip",
@@ -56,6 +62,11 @@ require("lazy").setup({
     require("copilot_cmp").setup()
   end
   },
+  {"hrsh7th/cmp-path"},
+  {"hrsh7th/cmp-cmdline"},
+  {"ray-x/cmp-treesitter"},
+--cmp
+
   {'mfussenegger/nvim-dap'},
 --  { "rcarriga/nvim-dap-ui", dependencies = {"mfussenegger/nvim-dap"} },
   {"theHamsta/nvim-dap-virtual-text"},
@@ -140,6 +151,19 @@ require("lazy").setup({
     }
 },
   {"elkowar/yuck.vim"},
+  { "shellRaining/hlchunk.nvim", event = { "UIEnter" }, },
+  { 
+    'norcalli/nvim-colorizer.lua',
+    config = function ()
+      require("colorizer").setup()
+    end,
+  },
+  {'m4xshen/autoclose.nvim',
+    config=function ()
+      require("autoclose").setup()
+    end,
+  }
+
 })
 
 require "plugins.nvim-tree"
@@ -154,6 +178,6 @@ require "plugins.copilot"
 require "plugins.nvim-dap-virtual-text"
 require "plugins.colorscheme"
 require "plugins.quickNote"
-require "plugins.fm-nvim"
 require "plugins.glow"
 require "plugins.noice"
+require "plugins.hlchunk"
