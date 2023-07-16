@@ -7,7 +7,9 @@ local keymap = vim.api.nvim_set_keymap
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
+
 vim.g.mapleader = " "
+
 vim.g.maplocalleader = " "
 
 -- Modes
@@ -70,25 +72,13 @@ keymap("n","<A-m>",':NvimTreeToggle<CR>',opts)
 
 -- nvim-telescope --
 local builtin = require('telescope.builtin')
-keymap('n', '<leader>ff', builtin.find_files, {})
-keymap('n', '<leader>fg', builtin.live_grep, {})
-keymap('n', '<leader>fb', builtin.buffers, {})
-keymap('n', '<leader>fh', builtin.help_tags, {})
-keymap('n', '<leader>fs', builtin.grep_string, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 
 
---debugger--
-keymap({"i", "n", "v"}, "<F5>", "<cmd>lua require'dap'.continue()<CR>", {silent = true, noremap = true, buffer = bufnr})
-keymap({"i", "n", "v"}, "<F10>", "<cmd>lua require'dap'.step_over()<CR>", {silent = true, noremap = true, buffer = bufnr})
-keymap({"i", "n", "v"}, "<F11>", "<cmd>lua require'dap'.step_into()<CR>", {silent = true, noremap = true, buffer = bufnr})
-keymap({"i", "n", "v"}, "<F12>", "<cmd>lua require'dap'.step_over()<CR>", {silent = true, noremap = true, buffer = bufnr})
-keymap({"i", "n", "v"}, "<F9>", "<cmd>lua require'dap'.toggle_breakpoint()<CR>", {silent = true, noremap = true, buffer = bufnr})
-
-
-keymap({"i", "n", "v"}, "<M-k>", "<cmd>lua require 'dapui'.eval<CR>", {})
-
- 
 -- touble.nvim --
 keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>",opts)
 keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",opts)
@@ -97,3 +87,10 @@ keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",opts)
 keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",opts)
 keymap("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",opts)
 
+--debugger--
+--
+
+
+--Translate--
+keymap("n","<leader>tt",":TranslateW<CR>",opts)
+keymap("v","<leader>tt",":TranslateW<CR>",opts)
