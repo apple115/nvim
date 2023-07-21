@@ -78,6 +78,7 @@ vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
 
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
 
 -- touble.nvim --
 keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>",opts)
@@ -89,8 +90,19 @@ keymap("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",opts)
 
 --debugger--
 --
+--
 
 
 --Translate--
 keymap("n","<leader>tt",":TranslateW<CR>",opts)
 keymap("v","<leader>tt",":TranslateW<CR>",opts)
+
+--neory--
+--
+keymap("n","<leader>on",":Neorg workspace notes<CR>",opts)
+keymap("n","<leader>ol",":Neorg workspace list_todo<CR>",opts)
+keymap("n","<leader>oq",":Neorg return<CR>",opts)
+
+
+
+
