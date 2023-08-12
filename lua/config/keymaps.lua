@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 local term_opts = { silent = true }
 
 -- shorten function name
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -21,10 +21,12 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
-keymap("n","<S-h>","^",opts)
-keymap("n","<S-l>","$",opts)
-keymap("n","<S-j>","5*j",opts)
-keymap("n","<S-k>","5*k",opts)
+keymap("n", "<S-h>", "^", opts)
+keymap("n", "<S-l>", "$", opts)
+
+-- visual --
+keymap("v", "<S-h>", "^", opts)
+keymap("v", "<S-l>", "$", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -42,7 +44,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-j>", ":bnext<CR>", opts)
 keymap("n", "<S-k>", ":bprevious<CR>", opts)
 
-
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
@@ -57,8 +58,6 @@ keymap("v", "p", '"_dP', opts)
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 -- Better terminal navigation
@@ -68,41 +67,59 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- nvim-tree --
-keymap("n","<A-m>",':NvimTreeToggle<CR>',opts)
+keymap("n", "<A-m>", ":NvimTreeToggle<CR>", opts)
 
 -- nvim-telescope --
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "find files in your current working directory" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Search for a string in your current working directory" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
+keymap("n", "gi", builtin.lsp_implementations, {})
+keymap("n", "gd", builtin.lsp_definitions, {})
 
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
+-- toggleterm --
+-- if you only want these mappings for toggle term use term://*toggleterm#* instead
+--vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+vim.keymap.set("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true, desc = "lazygit" })
 
 -- touble.nvim --
-keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>",opts)
-keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>",opts)
-keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",opts)
-keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",opts)
-keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",opts)
-keymap("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",opts)
+keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
+keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
+keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
+keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
+keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
+keymap("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
 
 --debugger--
---
---
-
 
 --Translate--
-keymap("n","<leader>tt",":TranslateW<CR>",opts)
-keymap("v","<leader>tt",":TranslateW<CR>",opts)
+keymap("n", "<leader>tt", ":TranslateW<CR>", opts)
+keymap("v", "<leader>tt", ":TranslateW<CR>", opts)
 
 --neory--
---
-keymap("n","<leader>on",":Neorg workspace notes<CR>",opts)
-keymap("n","<leader>ol",":Neorg workspace list_todo<CR>",opts)
-keymap("n","<leader>oq",":Neorg return<CR>",opts)
+keymap("n", "<leader>on", ":Neorg workspace notes<CR>", opts)
+keymap("n", "<leader>ol", ":Neorg workspace list_todo<CR>", opts)
+keymap("n", "<leader>oq", ":Neorg return<CR>", opts)
 
+--FTerm--
+keymap("n", "<C-t>", "<cmd>FTermToggle<CR>", opts)
+keymap("t", "<C-t>", "<C-\\><C-n><cmd>FTermToggle<CR>", opts)
+--code run FTerm --
 
+vim.keymap.set("n", "<leader><Enter>", function()
+	vim.api.nvim_command("write")
+	local buf = vim.api.nvim_buf_get_name(0)
+	local ftype = vim.filetype.match({ filename = buf })
+	if ftype == "rust" then
+		require("FTerm").scratch({ cmd = { "cargo", "run" } })
+	elseif ftype == "python" then
+		require("FTerm").scratch({ cmd = { "python3", buf } })
+	elseif ftype == "c" then
+		require("FTerm").scratch({ cmd = { "make" } })
+	end
+end)
 
-
+--notice--
+keymap("n", "<leader>n", ':lua require("notify").dismiss()<CR>', opts)

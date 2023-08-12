@@ -52,7 +52,6 @@ vim.notify = function(msg, ...)
     notify(msg, ...)
 end
 
-
 -- 开启 Folding
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'

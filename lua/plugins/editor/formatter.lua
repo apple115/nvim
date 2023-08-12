@@ -19,6 +19,21 @@ return {
 					python = {
 						require("formatter.filetypes.python").black,
 					},
+					html = {
+						require("formatter.filetypes.html").prettier,
+					},
+					css = {
+						require("formatter.filetypes.css").prettier,
+					},
+					javascript = {
+						require("formatter.filetypes.javascript").prettier,
+					},
+					haskell = {
+						require("formatter.filetypes.haskell").stylish_haskell,
+					},
+					rust = {
+						require("formatter.filetypes.rust").rustfmt,
+					},
 				},
 			})
 

@@ -1,0 +1,16 @@
+{
+"Starter Template": {
+        "prefix": ",",
+        "body": [
+            "#include <stdio.h>",
+            "#include <stdlib.h>",
+            "",
+            "int main(int argc, char *argv[])",
+            "{$0",
+            "",
+            "\treturn 0;",
+            "}"
+        ],
+        "description": "Standard C program"
+    }
+}
