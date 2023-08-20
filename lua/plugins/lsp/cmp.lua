@@ -19,7 +19,6 @@ return {
 			local luasnip = require("luasnip")
 			require("luasnip.loaders.from_vscode").lazy_load()
 			require("luasnip.loaders.from_vscode").load({ paths = "~/.config/nvim/snips/" })
-
 			-- nvim-cmp setup
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
@@ -105,20 +104,15 @@ return {
 		build = "make install_jsregexp",
 		dependencies = { "rafamadriz/friendly-snippets" },
 	},
-
 	{ "saadparwaiz1/cmp_luasnip" },
-
 	{ "hrsh7th/cmp-buffer" },
-
 	{
 		"zbirenbaum/copilot-cmp",
 		config = function()
 			require("copilot_cmp").setup()
 		end,
 	},
-
 	{ "hrsh7th/cmp-path" },
-
 	{ "hrsh7th/cmp-cmdline" },
 	{ "ray-x/cmp-treesitter" },
 }
