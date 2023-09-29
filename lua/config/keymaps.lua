@@ -92,6 +92,8 @@ keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
 keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
 keymap("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
 
+keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+
 --debugger--
 
 --Translate--
