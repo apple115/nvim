@@ -69,20 +69,17 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 -- nvim-tree --
 keymap("n", "<A-m>", ":NvimTreeToggle<CR>", opts)
 
--- nvim-telescope --
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "find files in your current working directory" })
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Search for a string in your current working directory" })
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
-
-keymap("n", "gi", builtin.lsp_implementations, {})
-keymap("n", "gd", builtin.lsp_definitions, {})
-
 -- toggleterm --
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 --vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 vim.keymap.set("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true, desc = "lazygit" })
+
+-- -- Telescope --
+-- local builtin = require("telescope.builtin")
+-- keymap("n", "<leader>/", builtin.live_grep, { desc = "Find in files" })
+-- keymap("n", "<leader>ff", builtin.find_files, {})
+-- keymap("n", "<leader>fb", builtin.buffers, {})
+-- keymap("n", "<leader>fh", builtin.help_tags, {})
 
 -- touble.nvim --
 keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)

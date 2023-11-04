@@ -1,21 +1,73 @@
 return {
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		tag = "0.1.3",
+		dependencies = {
+			{ "nvim-telescope/telescope-fzf-native.nvim", enabled = vim.fn.executable("make") == 1, build = "make" },
+		},
+		keys = {
+			{
+				"<leader>,",
+				"<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>",
+				desc = "Switch Buffer",
+			},
+			{ "<leader>/", require("telescope.builtin").live_grep, desc = "Grep (root dir)" },
+			{ "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+			{ "<leader><space>", require("telescope.builtin").find_files, desc = "Find Files (root dir)" },
+			--find--
+			{ "<leader>fb", "<cmd>Telescope buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
+			{ "<leader>ff", require("telescope.builtin").find_files, desc = "Find Files (root dir)" },
+			{ "<leader>fr", "<cmd>Telescope oldfiles<cr>", desc = "Recent" },
+			-- search--
+			{ "<leader>sa", "<cmd>Telescope autocommands<cr>", desc = "Auto Commands" },
+			{ "<leader>sb", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Buffer" },
+			{ "<leader>sc", "<cmd>Telescope command_history<cr>", desc = "Command History" },
+			{ "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
+			{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
+			{ "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+			{
+				"gd",
+				function()
+					require("telescope.builtin").lsp_definitions({ reuse_win = true })
+				end,
+				desc = "Goto Definition",
+			},
+			{ "gr", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+			{
+				"gI",
+				function()
+					require("telescope.builtin").lsp_implementations({ reuse_win = true })
+				end,
+				desc = "Goto Implementation",
+			},
+			{
+				"gy",
+				function()
+					require("telescope.builtin").lsp_type_definitions({ reuse_win = true })
+				end,
+				desc = "Goto T[y]pe Definition",
+			},
+		},
 		config = function()
 			require("telescope").setup({
 				defaults = {
 					-- Default configuration for telescope goes here:
 					-- config_key = value,
+					layout_config = {
+						horizontal = { prompt_position = "top", preview_width = 0.55 },
+						vertical = { mirror = false },
+						width = 0.87,
+						height = 0.80,
+						preview_cutoff = 120,
+					},
 					mappings = {
 						i = {
-							-- map actions.which_key to <C-h> (default: <C-/>)
-							-- actions.which_key shows the mappings for your picker,
-							-- e.g. git_{create, delete, ...}_branch for the git_branches picker
-							["<C-h>"] = "which_key",
+							["<C-n>"] = require("telescope.actions").cycle_history_next,
+							["<C-p>"] = require("telescope.actions").cycle_history_prev,
+							["<C-j>"] = require("telescope.actions").move_selection_next,
+							["<C-k>"] = require("telescope.actions").move_selection_previous,
 						},
+						n = { q = require("telescope.actions").close },
 					},
 				},
 				pickers = {
@@ -41,6 +93,13 @@ return {
 					-- the default case_mode is "smart_case"
 				},
 			})
+		end,
+	},
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "make",
+		enabled = vim.fn.executable("make") == 1,
+		config = function()
 			require("telescope").load_extension("fzf")
 		end,
 	},

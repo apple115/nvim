@@ -9,9 +9,11 @@ return {
 	{
 		"m4xshen/autoclose.nvim",
 		event = "VeryLazy",
-		config = function()
-			require("autoclose").setup()
-		end,
+		opts = {
+			diable_command_mode = true,
+			disable_filetype = { "markdown" },
+			enable_check_bracket_line = false,
+		},
 	},
 	{ "h-hg/fcitx.nvim" },
 	{
