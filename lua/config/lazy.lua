@@ -10,7 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
-vim.g.mapleader= " "
+vim.g.mapleader = " "
 
 vim.opt.rtp:prepend(lazypath)
 
