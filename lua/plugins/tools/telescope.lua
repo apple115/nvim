@@ -1,10 +1,18 @@
 return {
+
 	{
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.3",
 		dependencies = {
-			{ "nvim-telescope/telescope-fzf-native.nvim", enabled = vim.fn.executable("make") == 1, build = "make" },
+			{
+				"nvim-telescope/telescope-fzf-native.nvim",
+				enabled = vim.fn.executable("make") == 1,
+				build = "make",
+				"nvim-lua/plenary.nvim",
+				"stevearc/dressing.nvim", -- optional for vim.ui.select
+			},
 		},
+
 		keys = {
 			{
 				"<leader>,",
@@ -48,6 +56,7 @@ return {
 				desc = "Goto T[y]pe Definition",
 			},
 		},
+
 		config = function()
 			require("telescope").setup({
 				defaults = {
@@ -85,7 +94,7 @@ return {
 					--   extension_config_key = value,
 					-- }
 					-- please take a look at the readme of the extension you want to configure
-					-- fzf = {
+					-- fzf = {}
 					fuzzy = true, -- false will only do exact matching
 					override_generic_sorter = true, -- override the generic sorter
 					override_file_sorter = true, -- override the file sorter
@@ -94,13 +103,13 @@ return {
 				},
 			})
 		end,
-	},
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make",
-		enabled = vim.fn.executable("make") == 1,
-		config = function()
-			require("telescope").load_extension("fzf")
-		end,
+		{
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+			enabled = vim.fn.executable("make") == 1,
+			config = function()
+				require("telescope").load_extension("fzf")
+			end,
+		},
 	},
 }
