@@ -67,19 +67,12 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- nvim-tree --
-keymap("n", "<A-m>", ":NvimTreeToggle<CR>", opts)
+-- keymap("n", "<A-m>", ":NvimTreeToggle<CR>", opts)
 
 -- toggleterm --
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 --vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 vim.keymap.set("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true, desc = "lazygit" })
-
--- -- Telescope --
--- local builtin = require("telescope.builtin")
--- keymap("n", "<leader>/", builtin.live_grep, { desc = "Find in files" })
--- keymap("n", "<leader>ff", builtin.find_files, {})
--- keymap("n", "<leader>fb", builtin.buffers, {})
--- keymap("n", "<leader>fh", builtin.help_tags, {})
 
 -- touble.nvim --
 keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
@@ -98,9 +91,9 @@ keymap("n", "<leader>tt", ":TranslateW<CR>", opts)
 keymap("v", "<leader>tt", ":TranslateW<CR>", opts)
 
 --neory--
-keymap("n", "<leader>on", ":Neorg workspace notes<CR>", opts)
-keymap("n", "<leader>ol", ":Neorg workspace list_todo<CR>", opts)
-keymap("n", "<leader>oq", ":Neorg return<CR>", opts)
+-- keymap("n", "<leader>on", ":Neorg workspace notes<CR>", opts)
+-- keymap("n", "<leader>ol", ":Neorg workspace list_todo<CR>", opts)
+-- keymap("n", "<leader>oq", ":Neorg return<CR>", opts)
 
 --FTerm--
 keymap("n", "<C-t>", "<cmd>FTermToggle<CR>", opts)
@@ -122,3 +115,7 @@ end)
 
 --notice--
 keymap("n", "<leader>n", ':lua require("notify").dismiss()<CR>', opts)
+
+--termainl--
+keymap("n", "<A-m>", ":Joshuto<CR>", opts)
+keymap("t", "<A-m>", ":close_tab<CR>", opts)

@@ -63,5 +63,6 @@
         "/home/apple115/.config/nvim/lua",
         "${3rd}/luv/library"
     ],
-    "workspace.checkThirdParty": false
+    "workspace.checkThirdParty": false,
+    "completion.autoRequire": false
 }

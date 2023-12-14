@@ -7,6 +7,9 @@ return {
 		end,
 	},
 	{
+		"RRethy/vim-illuminate",
+	},
+	{
 		"m4xshen/autoclose.nvim",
 		event = "VeryLazy",
 		opts = {
