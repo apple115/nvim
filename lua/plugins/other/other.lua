@@ -10,13 +10,11 @@ return {
 		"RRethy/vim-illuminate",
 	},
 	{
-		"m4xshen/autoclose.nvim",
-		event = "VeryLazy",
-		opts = {
-			diable_command_mode = true,
-			disable_filetype = { "markdown" },
-			enable_check_bracket_line = false,
-		},
+		"windwp/nvim-autopairs",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
 	},
 	{ "h-hg/fcitx.nvim" },
 	{

@@ -119,3 +119,4 @@ keymap("n", "<leader>n", ':lua require("notify").dismiss()<CR>', opts)
 --termainl--
 keymap("n", "<A-m>", ":Joshuto<CR>", opts)
 keymap("t", "<A-m>", ":close_tab<CR>", opts)
+--lsp
