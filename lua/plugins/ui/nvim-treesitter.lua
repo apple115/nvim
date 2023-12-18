@@ -18,6 +18,7 @@ return {
 				"bash",
 				"latex",
 				"regex",
+				"markdown-inline",
 				"markdown",
 			},
 			sync_install = false,

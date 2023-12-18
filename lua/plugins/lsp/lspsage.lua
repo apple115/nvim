@@ -9,12 +9,6 @@ return {
 			desc = "Hover Documentation",
 		},
 		{
-			"<leader>fd",
-			mode = "n",
-			"<cmd>Lspsaga finder def+ref<CR>",
-			desc = "[F]ind",
-		},
-		{
 			"<leader>rn",
 			mode = "n",
 			"<cmd>Lspsaga rename ++project<CR>",
