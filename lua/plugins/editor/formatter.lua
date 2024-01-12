@@ -37,16 +37,6 @@ return {
 					},
 				},
 			})
-
-			vim.api.nvim_exec(
-				[[
-			   augroup FormatAutogroup
-			     autocmd!
-			     autocmd BufWritePost * FormatWrite
-			   augroup END
-			   ]],
-				true
-			)
 		end,
 	},
 }

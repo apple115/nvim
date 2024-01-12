@@ -20,6 +20,7 @@ return {
 				"regex",
 				"markdown-inline",
 				"markdown",
+				"java",
 			},
 			sync_install = false,
 			highlight = {

@@ -32,7 +32,7 @@ keymap("v", "<S-l>", "$", opts)
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+-- keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -66,29 +66,51 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
+-- bufferline --
+keymap("n", "<leader>bk", ":bk%<cr>", { noremap = true, silent = true, desc = "close buffer" })
+
 -- nvim-tree --
 -- keymap("n", "<A-m>", ":NvimTreeToggle<CR>", opts)
 
 -- toggleterm --
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 --vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
-vim.keymap.set("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", { noremap = true, silent = true, desc = "lazygit" })
 
 -- touble.nvim --
-keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opts)
-keymap("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opts)
-keymap("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opts)
-keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opts)
-keymap("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opts)
-keymap("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opts)
+keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { noremap = true, silent = true, desc = "trouble" })
+keymap(
+	"n",
+	"<leader>xw",
+	"<cmd>TroubleToggle workspace_diagnostics<cr>",
+	{ noremap = true, silent = true, desc = "trouble workspace" }
+)
+keymap(
+	"n",
+	"<leader>xd",
+	"<cmd>TroubleToggle document_diagnostics<cr>",
+	{ noremap = true, silent = true, desc = "trouble document" }
+)
+keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { noremap = true, silent = true, desc = "trouble loclist" })
+keymap(
+	"n",
+	"<leader>xq",
+	"<cmd>TroubleToggle quickfix<cr>",
+	{ noremap = true, silent = true, desc = "trouble quickfix" }
+)
+keymap(
+	"n",
+	"gR",
+	"<cmd>TroubleToggle lsp_references<cr>",
+	{ noremap = true, silent = true, desc = "trouble lsp_references" }
+)
 
 keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 --debugger--
 
 --Translate--
-keymap("n", "<leader>tt", ":TranslateW<CR>", opts)
-keymap("v", "<leader>tt", ":TranslateW<CR>", opts)
+-- keymap("n", "<leader>mm", ":TranslateW<CR>", opts)
+-- keymap("v", "<leader>mm", ":TranslateW<CR>", opts)
 
 --neory--
 -- keymap("n", "<leader>on", ":Neorg workspace notes<CR>", opts)
@@ -100,23 +122,13 @@ keymap("n", "<C-t>", "<cmd>FTermToggle<CR>", opts)
 keymap("t", "<C-t>", "<C-\\><C-n><cmd>FTermToggle<CR>", opts)
 --code run FTerm --
 
-vim.keymap.set("n", "<leader><Enter>", function()
-	vim.api.nvim_command("write")
-	local buf = vim.api.nvim_buf_get_name(0)
-	local ftype = vim.filetype.match({ filename = buf })
-	if ftype == "rust" then
-		require("FTerm").scratch({ cmd = { "cargo", "run" } })
-	elseif ftype == "python" then
-		require("FTerm").scratch({ cmd = { "python3", buf } })
-	elseif ftype == "c" then
-		require("FTerm").scratch({ cmd = { "make" } })
-	end
-end)
-
 --notice--
 keymap("n", "<leader>n", ':lua require("notify").dismiss()<CR>', opts)
 
 --termainl--
-keymap("n", "<A-m>", ":Joshuto<CR>", opts)
-keymap("t", "<A-m>", ":close_tab<CR>", opts)
+keymap("n", "<leader>e", "<cmd>Joshuto<CR>", opts)
 --lsp
+
+--code run
+keymap("n", "<f5>", ":AsyncTask file-run<CR>", opts)
+keymap("n", "<f9>", ":AsyncTask file-build<CR>", opts)
