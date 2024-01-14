@@ -16,12 +16,26 @@ return {
 				{ "▏", "FloatBorder" },
 			}
 
+			require("neoconf").setup()
+			require("java").setup()
+
 			local lspconfig = require("lspconfig")
 			vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { --圆角提示框
 				border = border,
 			})
 
-			local servers = { "clangd", "pyright", "tsserver", "lua_ls", "jsonls", "hls", "bashls", "rust_analyzer" }
+			local servers = {
+				"clangd",
+				"pyright",
+				"tsserver",
+				"lua_ls",
+				"jsonls",
+				"hls",
+				"bashls",
+				"rust_analyzer",
+				"jdtls",
+				"marksman",
+			}
 			for _, lsp in ipairs(servers) do
 				lspconfig[lsp].setup({
 					-- on_attach = my_custom_on_attach,

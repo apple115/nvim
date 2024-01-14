@@ -4,9 +4,14 @@ return {
 		build = ":MasonUpdate",
 		config = function()
 			require("mason").setup({
+        registries = {
+          "github:nvim-java/mason-registry",
+          "github:mason-org/mason-registry",
+        },
 				github = {
 					download_url_template = "https://github.com/%s/releases/download/%s/%s",
 				},
+
 				ui = {
 					icons = {
 						package_installed = "✓",
