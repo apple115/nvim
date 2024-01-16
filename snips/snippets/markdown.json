@@ -1,0 +1,11 @@
+{
+"Starter Template": {
+        "prefix": ".",
+        "body": [
+          "作者: apple115",
+          "时间: $1",
+          "内容: $2"
+        ],
+        "description": "markdown 开始模板"
+    }
+} 
