@@ -26,6 +26,7 @@ return {
 					cpp = { "clang_format" },
 					markdown = { "markdownlint", "markdown-toc" },
 					haskell = { "fourmolu" },
+          java={"google-java-format"}
 				},
 				format_on_save = {
 					timeout_ms = 500,
