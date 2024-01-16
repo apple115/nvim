@@ -103,7 +103,7 @@ keymap(
 	"<cmd>TroubleToggle lsp_references<cr>",
 	{ noremap = true, silent = true, desc = "trouble lsp_references" }
 )
-
+--file tree--
 keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 --debugger--
@@ -120,7 +120,6 @@ keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 --FTerm--
 keymap("n", "<C-t>", "<cmd>FTermToggle<CR>", opts)
 keymap("t", "<C-t>", "<C-\\><C-n><cmd>FTermToggle<CR>", opts)
---code run FTerm --
 
 --notice--
 keymap("n", "<leader>n", ':lua require("notify").dismiss()<CR>', opts)
