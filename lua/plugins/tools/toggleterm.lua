@@ -9,7 +9,7 @@ return {
 		},
 		keys = {
 			{
-				"<leader>gl",
+				"<leader>lg",
 				function()
 					require("toggleterm.terminal").Terminal
 						:new({
@@ -19,7 +19,7 @@ return {
 						})
 						:toggle()
 				end,
-				desc = "LazyGit",
+				desc = "[l]azy[g]it",
 			},
 		},
 	},
