@@ -76,33 +76,6 @@ keymap("n", "<leader>bk", ":bk%<cr>", { noremap = true, silent = true, desc = "c
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 --vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
--- touble.nvim --
-keymap("n", "<leader>xx", "<cmd>TroubleToggle<cr>", { noremap = true, silent = true, desc = "trouble" })
-keymap(
-	"n",
-	"<leader>xw",
-	"<cmd>TroubleToggle workspace_diagnostics<cr>",
-	{ noremap = true, silent = true, desc = "trouble workspace" }
-)
-keymap(
-	"n",
-	"<leader>xd",
-	"<cmd>TroubleToggle document_diagnostics<cr>",
-	{ noremap = true, silent = true, desc = "trouble document" }
-)
-keymap("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", { noremap = true, silent = true, desc = "trouble loclist" })
-keymap(
-	"n",
-	"<leader>xq",
-	"<cmd>TroubleToggle quickfix<cr>",
-	{ noremap = true, silent = true, desc = "trouble quickfix" }
-)
-keymap(
-	"n",
-	"gR",
-	"<cmd>TroubleToggle lsp_references<cr>",
-	{ noremap = true, silent = true, desc = "trouble lsp_references" }
-)
 --file tree--
 keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 

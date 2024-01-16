@@ -7,7 +7,6 @@ return {
 			sticky = true,
 			---Lines to be ignored while (un)comment
 			ignore = nil,
-
 			pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 		},
 	},
