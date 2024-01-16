@@ -67,7 +67,7 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- bufferline --
-keymap("n", "<leader>bk", ":bk%<cr>", { noremap = true, silent = true, desc = "close buffer" })
+keymap("n", "<leader>bk", ":bd<cr>", { noremap = true, silent = true, desc = "close buffer" })
 
 -- nvim-tree --
 -- keymap("n", "<A-m>", ":NvimTreeToggle<CR>", opts)
@@ -95,7 +95,7 @@ keymap("n", "<C-t>", "<cmd>FTermToggle<CR>", opts)
 keymap("t", "<C-t>", "<C-\\><C-n><cmd>FTermToggle<CR>", opts)
 
 --notice--
-keymap("n", "<leader>n", ':lua require("notify").dismiss()<CR>', opts)
+-- keymap("n", "<leader>n", ':lua require("notify").dismiss()<CR>', opts)
 
 --termainl--
 keymap("n", "<leader>e", "<cmd>Joshuto<CR>", opts)
