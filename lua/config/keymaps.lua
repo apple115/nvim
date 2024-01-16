@@ -67,7 +67,7 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- bufferline --
-keymap("n", "<leader>bk", ":bd<cr>", { noremap = true, silent = true, desc = "close buffer" })
+keymap("n", "<leader>bk", ":bd<cr>", { noremap = true, silent = true, desc = "[b]utter [k]ill " })
 
 -- nvim-tree --
 -- keymap("n", "<A-m>", ":NvimTreeToggle<CR>", opts)
