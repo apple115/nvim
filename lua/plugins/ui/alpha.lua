@@ -1,7 +1,7 @@
 return {
 	{
 		"goolord/alpha-nvim",
-		event = "VimEnter",
+		event = "BufWinEnter",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		config = function()
 			local alpha = require("alpha")

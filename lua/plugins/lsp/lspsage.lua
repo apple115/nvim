@@ -1,6 +1,7 @@
 return {
 	"nvimdev/lspsaga.nvim",
-	event = "BufReadPre",
+	event = "LspAttach",
+  lazy = true,
 	keys = {
 		{
 			"<C-k>",
