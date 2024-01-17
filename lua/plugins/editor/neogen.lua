@@ -14,7 +14,7 @@ return {
       require("neogen").generate({type='class'})
     end, desc="[N]eogen [c]lass"},
       {"<leader>nt",mode="n",function ()
-      require("neogen").generate({type='class'})
+      require("neogen").generate({type='type'})
     end, desc="[N]eogen [t]ype"},
 
   }
