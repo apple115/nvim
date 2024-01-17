@@ -30,7 +30,6 @@ return {
 				"tsserver",
 				"lua_ls",
 				"jsonls",
-				"hls",
 				"bashls",
 				"rust_analyzer",
 				"jdtls",

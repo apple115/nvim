@@ -23,6 +23,7 @@ return {
 				"markdown-inline",
 				"markdown",
 				"java",
+        "haskell"
 			},
 			sync_install = false,
 			highlight = {
