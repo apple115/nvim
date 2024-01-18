@@ -91,8 +91,6 @@ keymap("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 -- keymap("n", "<leader>oq", ":Neorg return<CR>", opts)
 
 --FTerm--
-keymap("n", "<C-t>", "<cmd>FTermToggle<CR>", opts)
-keymap("t", "<C-t>", "<C-\\><C-n><cmd>FTermToggle<CR>", opts)
 
 --notice--
 -- keymap("n", "<leader>n", ':lua require("notify").dismiss()<CR>', opts)

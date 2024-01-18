@@ -1,6 +1,23 @@
 return {
 	{
 		"numToStr/FTerm.nvim",
+    keys={
+      {
+
+      "<leader>t",
+      mode="n",
+      "<cmd>FTermToggle<CR>",
+      desc="[T]oggle FTerm"
+
+      },
+      {
+        "<leader>t",
+        mode="t",
+        "<C-\\><C-n><cmd>FTermToggle<CR>",
+        desc="close FTerm"
+      }
+    },
+
 		config = function()
 			require("FTerm").setup({
 				border = "double",

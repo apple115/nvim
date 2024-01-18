@@ -59,6 +59,7 @@ return {
 			{ "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands" },
 			{ "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Help Pages" },
 			{ "<leader>sH", "<cmd>Telescope highlights<cr>", desc = "Search Highlight Groups" },
+      --lsp--
 			{
 				"gd",
 				function()
