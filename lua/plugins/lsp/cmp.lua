@@ -1,7 +1,7 @@
 return {
 	{
 		"hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = "InsertEnter","CmdlineEnter",
     lazy= true,
 		config = function()
 			-- Add additional capabilities supported by nvim-cmp
