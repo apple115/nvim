@@ -102,3 +102,6 @@ keymap("n", "<leader>e", "<cmd>Joshuto<CR>", opts)
 --code run
 keymap("n", "<f5>", ":AsyncTask file-run<CR>", opts)
 keymap("n", "<f9>", ":AsyncTask file-build<CR>", opts)
+
+--reload config
+keymap ("n", "<leader>hr", "<cmd>source<CR>", {noremap = true, silent = true, desc = "reload config"})
