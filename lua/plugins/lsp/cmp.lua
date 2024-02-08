@@ -1,7 +1,7 @@
 return {
 	{
 		"hrsh7th/nvim-cmp",
-    event = "InsertEnter","CmdlineEnter",
+    event = "InsertEnter",
     lazy= true,
 		config = function()
 			-- Add additional capabilities supported by nvim-cmp
@@ -48,6 +48,7 @@ return {
 			local luasnip = require("luasnip")
 			require("luasnip.loaders.from_vscode").lazy_load()
 			require("luasnip.loaders.from_vscode").load({ paths = "~/.config/nvim/snips/" })
+
 			-- nvim-cmp setup
 			local cmp = require("cmp")
 			local lspkind = require("lspkind")
@@ -173,6 +174,9 @@ return {
 					{ name = "buffer" },
 					{ name = "path" },
 					{ name = "treesitter" },
+          {
+            name = "dictionary",
+          },
 					{ name = "nvim_lua" },
 					-- { name = "neorg", group_index = 2 },
 				},
