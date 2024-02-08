@@ -4,14 +4,14 @@ return {
     keys={
       {
 
-      "<leader>t",
+      "<C-t>",
       mode="n",
       "<cmd>FTermToggle<CR>",
       desc="[T]oggle FTerm"
 
       },
       {
-        "<leader>t",
+        "<C-t>",
         mode="t",
         "<C-\\><C-n><cmd>FTermToggle<CR>",
         desc="close FTerm"
