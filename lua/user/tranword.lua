@@ -56,21 +56,29 @@ local function appendCurrentWord(word)
   local currentLine = vim.fn.getline(line)
   local newLine = currentLine:sub(1, col) ..word.. currentLine:sub(col, -1) 
   vim.fn.setline(line, newLine)
+  vim.fn.cursor(line, col + #word)
 end
 
-function tranword()
+function Translate_current_word_and_replace ()
   -- 获取当前光标所在位置的单词
   local currentWord = getCurrentWord()
   local return_translation=translation(currentWord)
   replaceCurrentWord(return_translation)
 end
 
-function tranword2()
+function trans_definition ()
+  vim.fn.system("fcitx5-remote -o")
   local currentWord = vim.fn.input("请输入翻译的内容：")
+  --将fcitx输入法切换到中文模式
   local return_translation=translation(currentWord)
   appendCurrentWord(return_translation)
+  vim.fn.system("fcitx5-remote -c")
+  vim.fn.feedkeys("a")
 end
 
-vim.api.nvim_set_keymap('n', '<leader>dy', '<cmd>lua tranword2()<CR>', {noremap = true, silent = true})
+vim.cmd([[
+  imap <c-d> <esc>:lua trans_definition()<CR>
+]])
+
 -- TODO: 1. 根据文本类型进行一些代码格式化如python rust c c++等
 
